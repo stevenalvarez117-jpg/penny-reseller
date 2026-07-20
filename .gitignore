@@ -1,0 +1,14 @@
+.gitignore
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+pm2.log
+.next/
+out/
+build/
+dist/
+.cache/
+.idea/
+.vscode/settings.json
