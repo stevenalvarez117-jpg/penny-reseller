@@ -1,0 +1,16 @@
+{
+  "name": "penny-reseller",
+  "version": "1.0.0",
+  "description": "Full-stack penny reseller marketplace",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "start": "npm start --workspaces",
+    "test": "npm test --workspaces"
+  }
+}
