@@ -19,6 +19,10 @@ const loginSchema = Joi.object({
   password: Joi.string().required()
 });
 
+// Helper: surface the real error in development so debugging is possible
+const errorDetail = (err) =>
+  process.env.NODE_ENV === 'development' ? { detail: err.message } : {};
+
 // Register
 router.post('/register', async (req, res) => {
   try {
@@ -55,8 +59,8 @@ router.post('/register', async (req, res) => {
       user: result.rows[0]
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Registration failed' });
+    console.error('Registration error:', err);
+    res.status(500).json({ error: 'Registration failed', ...errorDetail(err) });
   }
 });
 
@@ -98,8 +102,8 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Login failed' });
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Login failed', ...errorDetail(err) });
   }
 });
 
